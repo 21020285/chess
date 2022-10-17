@@ -35,9 +35,7 @@ public abstract class Piece {
         this.coordinatesY = coordinatesY;
     }
 
-    public String getColor() {
-        return color;
-    }
+    public abstract String getColor();
 
     public void setColor(String color) {
         this.color = color;
