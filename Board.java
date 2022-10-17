@@ -10,7 +10,14 @@ public class Board {
     }
 
     public void addPiece (Piece piece) {
-
+        for (int i = 0; i < pieces.size(); i++) {
+            if (validate(piece.getCoordinatesX(), piece.getCoordinatesY())
+                    && piece.getCoordinatesX() != pieces.get(i).getCoordinatesX()
+                    && piece.getCoordinatesY() != pieces.get(i).getCoordinatesY()) {
+                return;
+            }
+        }
+        pieces.add(piece);
     }
 
     public boolean validate (int x, int y) {
@@ -21,12 +28,27 @@ public class Board {
     }
 
     public void removeAt(int x, int y) {
-
+        Piece r = new Rock(x,y);
+        for (int i = 0; i < pieces.size(); i++) {
+            if (validate(r.getCoordinatesX(), r.getCoordinatesY())
+                    && r.getCoordinatesX() == pieces.get(i).getCoordinatesX()
+                    && r.getCoordinatesY() == pieces.get(i).getCoordinatesY()) {
+                return;
+            }
+        }
+        pieces.remove(r);
     }
 
     public Piece getAt(int x, int y) {
+        Piece r = new Rock(x,y);
+        for (int i = 0; i < pieces.size(); i++) {
+            if (validate(r.getCoordinatesX(), r.getCoordinatesY())
+                    && r.getCoordinatesX() == pieces.get(i).getCoordinatesX()
+                    && r.getCoordinatesY() == pieces.get(i).getCoordinatesY()) {
+                return r;
+            }
+        }
         return null;
-        //later
     }
 
     public ArrayList<Piece> getPieces() {
