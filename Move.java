@@ -72,6 +72,7 @@ public class Move {
     }
 
     public String toString() {
-        return null;
+        return movedPiece.getColor() + "-" + movedPiece.getSymbol()
+            + (char) (this.endX - 1 + "a") + this.endY;
     }
 }
